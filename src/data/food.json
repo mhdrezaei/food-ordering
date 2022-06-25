@@ -1,0 +1,38 @@
+[
+    {
+        "id" : 1,
+        "name" : "Sushi",
+        "price" : 50,
+        "image" : "https://unsplash.com/photos/e29ha_BbOcQ"
+    },
+    {
+        "id" : 2,
+        "name" : "Pizza",
+        "price" : 30,
+        "image" : "../../assets/images/food/list/sushi.jpg"
+    },
+    {
+        "id" : 3,
+        "name" : "Hamberger",
+        "price" : 15,
+        "image" : "../../assets/images/food/list/sushi.jpg"
+    },
+    {
+        "id" : 4,
+        "name" : "Pasta",
+        "price" : 45,
+        "image" : "../../assets/images/food/list/sushi.jpg"
+    },
+    {
+        "id" : 5,
+        "name" : "Grilled Prawn",
+        "price" : 35,
+        "image" : "src/assets/images/food/list/sushi.jpg"
+    },
+    {
+        "id" : 6,
+        "name" : "Kebab meat",
+        "price" : 50,
+        "image" : "../../../assets/images/food/list/sushi.jpg"
+    }
+]

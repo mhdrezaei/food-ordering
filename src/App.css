@@ -1,3 +1,12 @@
+.swiper-button-next, .swiper-button-prev{
+color: #ffc107 !important;  
+}
+.swiper-pagination-bullet{
+background: #fff !important;
+} 
+.swiper-pagination-bullet-active{
+  background: #ffc107 !important;
+}
 .App {
   text-align: center;
 }
