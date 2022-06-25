@@ -7,7 +7,6 @@ function Header() {
     <>
     <header>
     <Nav />
-    <Slider/>
         
     </header>
     </>

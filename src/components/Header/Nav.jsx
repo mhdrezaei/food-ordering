@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import { ReactComponent as FoodIcon } from '../../assets/images/food-icon.svg'
 
 function Nav() {
@@ -26,7 +27,7 @@ function Nav() {
               <a className="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
+            <Link to='/add-food' className='nav-link'>Add food</Link>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="offcanvasNavbarLgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

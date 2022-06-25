@@ -14,8 +14,8 @@ import Barbecue from '../../assets/images/food/slider/barbecue.jpg'
 
 function Slider() {
   return (
-    <div className='col-12'>
-    <div className='container-xxl px-0'>
+    
+    <div className='container-fluid px-0'>
     <Swiper
     // install Swiper modules
     modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -32,7 +32,6 @@ function Slider() {
     <SwiperSlide><img className='img-fluid' src={Barbecue} alt='barbecue' /></SwiperSlide>
     
   </Swiper>
-  </div>
   </div>
   )
 }

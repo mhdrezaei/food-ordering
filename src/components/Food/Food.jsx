@@ -1,5 +1,5 @@
 import React from 'react'
-import FoodList from '../../data/food.json'
+import FoodList from '../../Food-data.json'
 import FoodItems from './FoodItems'
 
 function Food() {
@@ -7,7 +7,7 @@ function Food() {
     <main>
         <div className='col-12 mt-5'>
             <div className='container'>
-                <div className='row'>
+                <div className='row gx-1'>
                 {FoodList.map((food) => {
                 return <FoodItems key={food.id} price={food.price} name={food.name} image={food.image} />
                })}   
