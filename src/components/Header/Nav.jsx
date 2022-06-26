@@ -24,7 +24,7 @@ function Nav() {
         <div className="offcanvas-body">
           <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <Link to='/' className="nav-link active" aria-current="page">Home</Link>
             </li>
             <li className="nav-item">
             <Link to='/add-food' className='nav-link'>Add food</Link>

@@ -7,6 +7,9 @@ background: #fff !important;
 .swiper-pagination-bullet-active{
   background: #ffc107 !important;
 }
+.form-control:focus{
+  box-shadow: 0 0 0 0.25rem rgb(255 193 7 / 61%) !important;
+}
 .App {
   text-align: center;
 }
