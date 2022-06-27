@@ -9,11 +9,9 @@ import Food from './components/Food/Food';
 import Sushi from './assets/images/food/list/sushi.jpg'
 import AddFood from './pages/AddFood';
 import Home from './pages/Home';
+import Footer from './components/Footer/Footer';
 
 function App() {
-
-
-
 
   return (
     <>
@@ -23,8 +21,10 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/add-food' element={<AddFood/>}/>
       </Routes>
+      <Footer/>
     </Router>
     <ToastContainer/>
+    
     
     </>
   );
