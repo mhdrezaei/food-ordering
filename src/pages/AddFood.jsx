@@ -40,7 +40,9 @@ function AddFood() {
         }
         return res.json() 
       }).then((actualData) => { 
-        toast.success('Added Food successfully')
+        actualData.message.error ?  toast.error(actualData.message.error) : toast.success(actualData.message.success)
+        console.log(actualData);
+        
         setFormData({
           foodName :'',
           price :'',
