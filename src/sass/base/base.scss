@@ -1,0 +1,12 @@
+html{ 
+    font-size: 100%; 
+    direction: var(--direction); 
+    @include respond(phone){ font-size: 80%; } 
+    @include respond(tab-port){ font-size: 85%; }
+    @include respond(desktop){ font-size: 100%; } 
+    @include respond(large-desktop){ font-size: 105.5%; } 
+    @include respond(xlarge-desktop){ font-size: 110%; } 
+}
+body{
+    font-family: monospace;
+}
