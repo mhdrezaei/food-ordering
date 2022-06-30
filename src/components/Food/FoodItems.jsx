@@ -24,8 +24,12 @@ function FoodItems({price , name , image}) {
               </div>
               <div className='add-to-cart align-self-start w-100 mt-auto p-2 ' >
                 <div className='d-flex flex-fill justify-content-end px-5'>
-                <EyeIcon className='mx-2' fill='#ffc107' width='40px' height='40px'  />
-                <AddToCart className='mx-2' fill='#ffc107' width='40px' height='40px'  />
+                  <a href='#' className='btn btn-warning mx-2'>
+                <EyeIcon  fill='#212529' width='1.5rem' height='1.5rem'  />
+                  </a>
+                  <a href='#' className='btn btn-warning mx-2'>
+                <AddToCart  fill='#212529' width='1.5rem' height='1.5rem'  />
+                  </a>
                 </div>
               </div>
                 </div>
