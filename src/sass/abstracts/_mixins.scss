@@ -1,0 +1,25 @@
+@mixin respond($breakpoint) { 
+    @if $breakpoint == phone {
+         @media (max-width : 576px){ @content} 
+        } 
+    @if $breakpoint == tab-port {
+         @media (min-width : 576px) and (max-width : 768px) { @content} 
+        } 
+    @if $breakpoint == desktop {
+        @media (min-width : 768px) and (max-width : 991px) { @content}
+             }
+    @if $breakpoint == large-desktop {
+        @media (min-width : 991px) and (max-width : 1199px) { @content} 
+    } 
+    @if $breakpoint == xlarge-desktop { 
+        @media (min-width : 1200px) and (max-width : 1399px){ @content} 
+    }
+    @if $breakpoint == xxlarge-desktop { 
+        @media (min-width : 1400px){ @content} } 
+    } 
+    @mixin border-gradient($from, $to, $weight: 0) {
+        $mix-main: mix($from, $to);
+        $mix-sub-from: mix($mix-main, $from);
+        $mix-sub-to: mix($mix-main, $to);
+        box-shadow: 0 1px 0 $weight rgba($mix-sub-to, 0.25), 0 -1px 0 $weight rgba($mix-sub-from, 0.25), 1px 0 0 $weight rgba($mix-sub-to, 0.25), -1px 0 0 $weight rgba($mix-sub-from, 0.25), 1px -1px 0 $weight rgba($mix-main, 0.5), -1px 1px 0 $weight rgba($mix-main, 0.5), 1px 1px 0 $weight rgba($to, 0.75), -1px -1px 0 $weight rgba($from, 0.75); 
+    }
