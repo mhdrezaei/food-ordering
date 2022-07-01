@@ -72,6 +72,17 @@
         // box-shadow: 0 1px 0 0 rgb(9 147 186 / 25%), 0 -1px 0 0 rgba(3 219 216 / 25%), 1px 0 0 0 rgb(9 147 186 / 25%), -1px 0 0 0 rgb(3 219 216 / 25%), 1px -1px 0 0 rgb(6 183 201 / 50%), -1px 1px 0 0 rgb(6 183 201 / 50%), 1px 1px 0 0 rgb(12 111 170 / 75%), -1px -1px 0 0 rgb(0 255 231 / 75%);
         animation: rotateThis 1s linear infinite;
     }
+    &__badge{
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: -2.5rem;
+        left: 3rem;
+        background-color: orangered;
+        color: #fff;
+        border-radius: 50%;
+        line-height: 2rem;
+    }
     &__background {
         width: 5.5rem;
         height: 5.5rem;

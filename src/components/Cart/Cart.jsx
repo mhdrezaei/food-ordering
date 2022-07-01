@@ -8,11 +8,13 @@ function Cart() {
       <input type="checkbox" className="cart-navigation__check" id="nav-check"/>
       <label for="nav-check" className="cart-navigation__button">
         <span className="cart-navigation__icon">
+        <span className='cart-navigation__badge'>3</span>
 		<CartIcon className='cart-navigation__icon--svg' width='35px' height='35px' />
 		</span>
 		<span className="cart-navigation__circle"></span>
 		
       </label>
+      
       <div className="cart-navigation__background"></div>
 
 	  <div className="menu-cart-navigation-container bg-dark">

@@ -6,26 +6,28 @@ import {ReactComponent as EyeIcon} from '../../assets/eye.svg'
 import { useCookies } from 'react-cookie';
 
 
-function FoodItems({price , name , image}) {
+function FoodItems({inx ,price , name , image}) {
   const {addToCart} = useContext(FoodContext);
   const [cookies, setCookie] = useCookies(['user']);
+  console.log(inx)
   function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  const handleClick = (e) => {
-    e.preventDefault();
-    if(!cookies.user){
+  if(!cookies.user){
     setCookie('user' , randomNumberInRange(1000000,10000000),{ path: '/' });
     }
-    
+ 
+  const handleClick = (e) => {
+    e.preventDefault();
+     
     const thisFood = {
       user : cookies.user,
       food : [{
       foodName : name,
       price : price,
-      count : 1 ,
-      imgUrl : image
+      imgUrl : image,
+      foodId : inx 
       }
     ]
     }

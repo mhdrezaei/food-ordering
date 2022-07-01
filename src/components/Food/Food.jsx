@@ -25,7 +25,7 @@ function Food() {
             <div className='container'>
                 <div className='row gx-1'>
                 {foods.map((food) => {
-                return <FoodItems key={food._id} price={food.price} name={food.name} image={food.imgUrl} />
+                return <FoodItems key={food._id} inx={food._id} price={food.price} name={food.name} image={food.imgUrl} />
                })}   
                 </div>
             </div>
