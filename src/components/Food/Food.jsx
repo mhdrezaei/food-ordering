@@ -1,25 +1,22 @@
 import React from 'react';
-import { useEffect , useState } from 'react';
+import { useEffect , useState , useContext } from 'react';
+import FoodContext from '../../context/foodContext';
 import FoodItems from './FoodItems';
 import axios from 'axios';
 import Spinner from '../../SharedComponnent/Spinner';
 
 function Food() {
-  const [foods , setFoods] = useState([]);
-  const [loading , setLoading] = useState(true);
+  const {loading ,isLoading , foods , getFoods} = useContext(FoodContext);
+  // const [foods , setFoods] = useState([]);
+  // const [loading , setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
-    const featchFood = async () =>{
-      const foodsData = await axios('http://localhost:5000/showall',);
-      console.log(foodsData.data);
-      setFoods(foodsData.data);
-      setLoading(true)
-    }
-    featchFood();
+    isLoading(false)
+    getFoods();
+    isLoading(true)
    
   },[]);
-  console.log(foods);
+  console.log(isLoading);
 
   if(loading){
   return (

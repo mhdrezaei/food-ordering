@@ -1,10 +1,36 @@
 import React from 'react';
+import { useContext } from 'react'; 
+import FoodContext from '../../context/foodContext';
 import {ReactComponent as AddToCart} from '../../assets/add-to-cart.svg'
 import {ReactComponent as EyeIcon} from '../../assets/eye.svg'
-
+import { useCookies } from 'react-cookie';
 
 
 function FoodItems({price , name , image}) {
+  const {addToCart} = useContext(FoodContext);
+  const [cookies, setCookie] = useCookies(['user']);
+  function randomNumberInRange(min, max) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  const handleClick = (e) => {
+    e.preventDefault();
+    if(!cookies.user){
+    setCookie('user' , randomNumberInRange(1000000,10000000),{ path: '/' });
+    }
+    
+    const thisFood = {
+      user : cookies.user,
+      food : [{
+      foodName : name,
+      price : price,
+      count : 1 ,
+      imgUrl : image
+      }
+    ]
+    }
+    addToCart(thisFood);
+  }
     
   return (
     <div className='shadow-sm  col-xl-6 col-md-6 col-sm-12 g-3'  >
@@ -24,11 +50,11 @@ function FoodItems({price , name , image}) {
               </div>
               <div className='add-to-cart align-self-start w-100 mt-auto p-2 ' >
                 <div className='d-flex flex-fill justify-content-end px-5'>
-                  <a href='#' className='btn btn-warning mx-2'>
+                  <button  className='btn btn-warning mx-2'>
                 <EyeIcon  fill='#212529' width='1.5rem' height='1.5rem'  />
-                  </a>
-                  <a href='#' className='btn btn-warning mx-2'>
-                <AddToCart  fill='#212529' width='1.5rem' height='1.5rem'  />
+                  </button>
+                  <a href='#' onClick={handleClick} className='btn btn-warning mx-2'>
+                <AddToCart   fill='#212529' width='1.5rem' height='1.5rem'  />
                   </a>
                 </div>
               </div>
