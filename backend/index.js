@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const express = require('express');
+const { ObjectId } = require('mongodb');
 const app = express();
 corsOptions = {
     origin: 'http://localhost:3000',
@@ -30,8 +31,8 @@ const cartSchema = new mongoose.Schema({
         {
         foodName : String,
         price : Number,
-        count : Number,
-        imgUrl : String
+        imgUrl : String,
+        foodId : ObjectId
         }
     ]
 });
@@ -53,22 +54,26 @@ async function addToCart(item){
     const cartFoods = new Cart({
         ...item
     });
-    const availableUser = await Cart.findOne({ user : item.user }).exec();
+    const availableUser = await Cart.exists({ user : item.user });
     if(availableUser){
-        const availableFood = await Cart.findOne({user : item.user , foodName : item.food[0].foodName }).exec();
-        const index = availableFood.food.findIndex((element)=> element.foodName === item.food[0].foodName)
-
-        if(availableFood.food.find((element)=> element.foodName === item.food[0].foodName)){
-            await Cart.findOneAndUpdate({user : item.user ,foodName : item.food[0].foodName},{count: 2});
-                
-                return {success :`${item.food[index].foodName} added to Cart!`}
-    }else{
-        await Cart.updateOne({user : item.user},{food :[{item}]})
+            
+        await Cart.updateOne({user : item.user },
+            {
+             $push : {
+                food :  {
+                         'foodName' : item.food[0].foodName,
+                         'price' : item.food[0].price,
+                         'imgUrl' : item.food[0].imgUrl,
+                         'foodId' : item.food[0].foodId
+                       } //inserted data is the object to be inserted 
+              }
+            });
+        
         return {success :`${item.food[0].foodName} added to Cart!!`}
-    }
+    
     }else{
         await cartFoods.save()
-        return {success :`${item.food} added to Cart!!!`}
+        return {success :`${item.food[0].foodName} added to Cart!!!`}
     }
 }
 
@@ -89,7 +94,6 @@ app.get('/', (req, res) => {
     res.send('<h1>hello</h1>')
   })
 app.get('/showall' , (req , res) => {
-    console.log(req.body)
     const Food = async ()=>{
         let foods = await showFood();
         return foods
@@ -101,31 +105,27 @@ app.get('/showall' , (req , res) => {
 })
 // Store food in DB
 app.post('/stored', (req, res) => {
-    console.log(req.body);
     const saveFood = async ()=>{
     let message = await storeFood(req.body);
     return message
     }
     (async () => {
         const message =await saveFood();
-        console.log('msg :' + message)
         res.send({"message" : message})
       })()    
 });
 // Add to Cart
 app.post('/add-to-cart', (req, res) => {
-    // console.log(req.body);
     const addFoodCart = async ()=>{
     let message = await addToCart(req.body);
     return message
     }
     (async () => {
-        const message = await addFoodCart();
+        const message = await addFoodCart(req.body);
         res.send({"message" : message})
       })()    
 });
 
-// app.listen(5000,() => console.log('server is running'))
 app.listen(5000, function() {
     console.log("Node app is running at localhost:" + 5000)
 });
