@@ -1,10 +1,22 @@
 const path = require('path');
 module.exports = {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+    }
+    return config;
+  },
     entry : './src/index.js',
     output : {
        filename  : 'bundle.js',
        path : path.resolve(__dirname , './dist'),
        publicPath : 'dist/'
+    },
+    resolve : {
+      fallback:{
+        "fs": false,
+        assert: require.resolve("assert/"),
+      }
     },
     devServer: {
       historyApiFallback: true,
@@ -55,3 +67,6 @@ module.exports = {
 }
 
 }
+config.node = {
+  fs: "empty"
+};

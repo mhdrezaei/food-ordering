@@ -14,7 +14,7 @@ function Nav() {
       <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="offcanvas offcanvas-end text-white bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+      <div className="offcanvas offcanvas-end text-white bg-dark" tabIndex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="offcanvasNavbar2Label">
           <FoodIcon fill='#ffc107' width='50px' height='50px' />

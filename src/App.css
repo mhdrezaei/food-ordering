@@ -35,6 +35,12 @@ background: #fff !important;
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.trash{
+  cursor: pointer;
+}
+.trash path {
+  fill: #fe005d !important;
+}
 
 .App-link {
   color: #61dafb;

@@ -16,7 +16,6 @@ function Food() {
     isLoading(true)
    
   },[]);
-  console.log(isLoading);
 
   if(loading){
   return (

@@ -9,7 +9,6 @@ import { useCookies } from 'react-cookie';
 function FoodItems({inx ,price , name , image}) {
   const {addToCart} = useContext(FoodContext);
   const [cookies, setCookie] = useCookies(['user']);
-  console.log(inx)
   function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
     return Math.floor(Math.random() * (max - min + 1)) + min;

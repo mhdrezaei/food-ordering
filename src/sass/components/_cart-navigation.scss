@@ -24,8 +24,8 @@
         } 
     &__check:checked ~ &__list, &__check:checked ~ .menu-cart-navigation-container #menu-cart-navigation{
          opacity: 1;
-         display: block;
           width: 100%; 
+          left:25%
         }
         &__check:checked ~ &__button {
             background-color: var(--secondary-color);
@@ -78,7 +78,7 @@
         position: absolute;
         top: -2.5rem;
         left: 3rem;
-        background-color: orangered;
+        background-color: #fe005d;
         color: #fff;
         border-radius: 50%;
         line-height: 2rem;
@@ -97,11 +97,10 @@
         transition: all 0.8s;
     }
     & .menu-cart-navigation-container #menu-cart-navigation{
-        display: none;
         list-style: none;
-        position: fixed;
-        top: 25%;
-        left: 25%;
+        position: absolute;
+        top: 15%;
+        left: -100%;
         z-index: 1500;
         opacity: 0;
         text-align: center;
