@@ -83,6 +83,15 @@ async function showFood(){
    return JSON.stringify(allFoods);
 }
 
+// Count Cart function
+async function countCart(data){
+    const cartFoods = await Cart.findOne({user : data.user}).exec();
+    if(cartFoods){
+    return JSON.stringify(cartFoods.food);
+    }else{
+        return '';
+    }
+ }
 app.use((req, res, next) => {
     // res.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -103,6 +112,18 @@ app.get('/showall' , (req , res) => {
             res.send(foods)
           })()
 })
+// count food in cart
+app.post('/count-cart' , (req , res) => {
+    // console.log(req.body)
+    const cart = async ()=>{
+        let foods = await countCart(req.body);
+        return foods
+        }
+        (async () => {
+            const foods = await cart();
+            res.send(foods)
+          })()
+})
 // Store food in DB
 app.post('/stored', (req, res) => {
     const saveFood = async ()=>{
@@ -118,11 +139,12 @@ app.post('/stored', (req, res) => {
 app.post('/add-to-cart', (req, res) => {
     const addFoodCart = async ()=>{
     let message = await addToCart(req.body);
+    console.log(message)
     return message
     }
     (async () => {
         const message = await addFoodCart(req.body);
-        res.send({"message" : message})
+        res.send({message})
       })()    
 });
 
