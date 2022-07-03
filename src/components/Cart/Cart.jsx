@@ -4,10 +4,12 @@ import BadgeCart from './BadgeCart';
 import { useContext } from 'react';
 import FoodContext from '../../context/foodContext';
 import CartList from './CartList';
+import CartFooter from './CartFooter';
 
 function Cart() {
   const {cartList} = useContext(FoodContext);
-
+  console.log(cartList);
+  
   const result = [...cartList.reduce((r, e) => {
     let k = `${e.foodName}|${e.foodName}`;
     if(!r.has(k)) r.set(k, {...e, count: 1})
@@ -44,6 +46,7 @@ function Cart() {
             
           </div>
           
+        <CartFooter/>
         </div>
         </div> 
     </div>
