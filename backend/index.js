@@ -92,6 +92,28 @@ async function countCart(data){
         return '';
     }
  }
+ // remove from cart function
+ async function removeFromCart(data){
+    const removedFood = await Cart.updateOne({ user: data.user }, {
+        "$pull": {
+            "food": {
+              "foodId": {
+                "$in": [
+                    data.foodId
+                ]
+              }
+            }
+          }
+        
+    },{ safe: true });
+    
+    console.log(removedFood)
+    if(removedFood.modifiedCount){
+    return {success : 'deleted from cart successfully'}
+    }else{
+    return {error : 'somthing went wrong!'};
+    }
+ }
 app.use((req, res, next) => {
     // res.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -110,6 +132,18 @@ app.get('/showall' , (req , res) => {
         (async () => {
             const foods = await Food();
             res.send(foods)
+          })()
+})
+
+// delete from Cart 
+app.delete('/remove-from-cart' , (req , res) => {
+    const delFood = async ()=>{
+        let deletedFood = await removeFromCart(req.body);
+        return deletedFood
+        }
+        (async () => {
+            const deletedFood = await delFood();
+            res.send(deletedFood)
           })()
 })
 // count food in cart

@@ -3,25 +3,17 @@ import { useContext } from 'react';
 import FoodContext from '../../context/foodContext';
 import {ReactComponent as AddToCart} from '../../assets/add-to-cart.svg'
 import {ReactComponent as EyeIcon} from '../../assets/eye.svg'
-import { useCookies } from 'react-cookie';
 
 
 function FoodItems({inx ,price , name , image}) {
-  const {addToCart} = useContext(FoodContext);
-  const [cookies, setCookie] = useCookies(['user']);
-  function randomNumberInRange(min, max) {
-    // 👇️ get number between min (inclusive) and max (inclusive)
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  if(!cookies.user){
-    setCookie('user' , randomNumberInRange(1000000,10000000),{ path: '/' });
-    }
+  const {addToCart , cookie} = useContext(FoodContext);
+ 
  
   const handleClick = (e) => {
     e.preventDefault();
      
     const thisFood = {
-      user : cookies.user,
+      user : cookie.user,
       food : [{
       foodName : name,
       price : price,

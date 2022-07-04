@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useCookies } from 'react-cookie';
 
+
 const FoodContext = createContext();
 
 export const FoodProvider = ({children}) => {
@@ -14,7 +15,14 @@ export const FoodProvider = ({children}) => {
     const [loading , setLoading] = useState(true);
     const [countFoodCart , setCountFoodCart] = useState(0);
     const [cartList , setCartList] = useState([]);
-    const [cookie , setCookie] = useCookies('user');
+    const [cookie, setCookie] = useCookies(['user']);
+  function randomNumberInRange(min, max) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  if(!cookie.user){
+    setCookie('user' , randomNumberInRange(1000000,10000000),{ path: '/' });
+    }
     const userCookie = {
       user : cookie.user
     }
@@ -59,6 +67,48 @@ export const FoodProvider = ({children}) => {
       
 
     }
+    // remove from cart
+    const removeFromCart = async (user , foodId) =>{
+      const deleteInfo = {
+        user,
+        foodId
+      }
+
+      const delFoods = fetch('http://localhost:5000/remove-from-cart',{
+        method : 'DELETE',
+        mode : 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+      },
+        body : JSON.stringify(deleteInfo),
+      }).then((res) => {
+        if (!res.status) {
+        toast.error(`This is an HTTP error: The status is ${res.status}`)
+        return
+        }
+        return res.json() 
+      }).then((actualData) => { 
+        console.log(actualData)
+        actualData.error ?  toast.error(actualData.error) : toast.success(actualData.success); 
+        const userInfo = {
+          user
+      }
+      countCart(userInfo);
+
+            
+    } )
+      .catch((err) => {
+        console.log(err.message);
+        toast.error(err)
+      });
+      
+
+
+
+
+    }
     // add To Cart
 
     const addToCart = (newFood) => {
@@ -93,10 +143,12 @@ export const FoodProvider = ({children}) => {
         isLoading,
         addToCart,
         countCart,
+        removeFromCart,
         foods,
         loading,
         countFoodCart,
-        cartList
+        cartList,
+        cookie
 
     }}>{children}</FoodContext.Provider>
 }

@@ -2,13 +2,10 @@ import React from 'react';
 import { useEffect , useState , useContext } from 'react';
 import FoodContext from '../../context/foodContext';
 import FoodItems from './FoodItems';
-import axios from 'axios';
 import Spinner from '../../SharedComponnent/Spinner';
 
 function Food() {
   const {loading ,isLoading , foods , getFoods} = useContext(FoodContext);
-  // const [foods , setFoods] = useState([]);
-  // const [loading , setLoading] = useState(true);
 
   useEffect(() => {
     isLoading(false)
@@ -16,6 +13,7 @@ function Food() {
     isLoading(true)
    
   },[]);
+  console.log(isLoading);
 
   if(loading){
   return (
