@@ -40,7 +40,7 @@ function Cart() {
             <h2 className='text-light border-1' >Cart</h2>
             <hr className='text-light' />
             {result.map((food) => {
-              return <CartList key={food._id} inx={food.foodId} count={food.count} name={food.foodName} price={food.price} image={food.imgUrl} />
+              return <CartList key={food._id} inx={food._id} count={food.count} name={food.foodName} price={food.price} image={food.imgUrl} />
             })}
             
             

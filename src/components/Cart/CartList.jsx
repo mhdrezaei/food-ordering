@@ -16,8 +16,8 @@ function CartList({inx , name , price , image , count}) {
               <div className='col-2'><p className='text-light' >{price} $</p></div>
               <div className='col-2'><p className='text-light' >{count}</p></div>
               <div className='col-2'><p className='text-light' >
-                <button onClick={handleRemove} >
-              <TrashCan  className='trash' fill='#fe005d' width='25px' height='25px' />
+                <button className='btn btn-danger' onClick={handleRemove} >
+              <TrashCan  className='trash' fill='#fff' width='25px' height='25px' />
                 </button>
               </p></div>
             </div>

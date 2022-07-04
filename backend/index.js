@@ -97,7 +97,7 @@ async function countCart(data){
     const removedFood = await Cart.updateOne({ user: data.user }, {
         "$pull": {
             "food": {
-              "foodId": {
+              "_id": {
                 "$in": [
                     data.foodId
                 ]
@@ -105,7 +105,7 @@ async function countCart(data){
             }
           }
         
-    },{ safe: true });
+    },{ safe: true }).limit(1);
     
     console.log(removedFood)
     if(removedFood.modifiedCount){
